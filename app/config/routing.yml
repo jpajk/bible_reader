@@ -1,3 +1,8 @@
+static_pages:
+    resource: "@StaticPagesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 entity:
     resource: "@EntityBundle/Controller/"
     type:     annotation
