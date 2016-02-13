@@ -14,6 +14,7 @@
                 %}
                     <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
                 {% endstylesheets %}
+                <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
             {% endblock %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
@@ -57,7 +58,7 @@
                     </div><!-- row -->
                 </div><!-- container -->
             </div>
-            
+
             {% block javascripts %}{% endblock %}
             <script src="{{ asset('js/jquery.js') }}"></script>        
             <script src="{{ asset('js/bootstrap.js') }}"></script>

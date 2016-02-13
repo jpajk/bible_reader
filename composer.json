@@ -38,7 +38,8 @@
         "twbs/bootstrap": "3.0.*",
         "jquery/jquery":  "1.11.*",
         "braincrafted/bootstrap-bundle": "~2.0",
-        "symfony/assetic-bundle": "^2.7"
+        "symfony/assetic-bundle": "^2.7",
+        "bmatzner/fontawesome-bundle": "~4.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
