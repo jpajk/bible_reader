@@ -13,13 +13,13 @@ class IndexBible
 	}	
 
 	public function indexBook()
-	{
-		$exists = file_exists($this->filepath);
-	
-		if ($exists) 
+	{	
+		if (file_exists($this->filepath)) 
 		{
 			$this->performIndexing();
 		}
+		else
+			exit("Couldn't find the file!\n");
 	}
 
 	private function performIndexing()
@@ -28,10 +28,32 @@ class IndexBible
 		$dom = new \DOMWrap\Document();
 		$dom->html($contents);
 		$nodes = $dom->find('div.book');
+		$entities_array = [];
 
-		var_dump($nodes->first()->find('h3')[0]->nodeValue);
+		foreach ($nodes as $key => $node) 
+		{			
+			$title = $node->find('h3')->first();
+			$verses = $node->find('p');
 
-		exit;
+			if (isset($title->nodeValue)) 
+			{
+				$entities_array['title_' . $key] = $title->nodeValue;
+
+				foreach ($verses as $index => $verse) 
+				{
+					if (isset($verse->nodeValue)) 
+					{
+						$entities_array['verse_' . $key . '_' . $index] = $verse;						
+					}					
+				}
+
+			}
+
+
+		}
+
+		var_dump($entities_array);
+		exit;		
 
 	}
 }
