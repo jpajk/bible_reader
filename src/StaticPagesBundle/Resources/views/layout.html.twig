@@ -8,7 +8,10 @@
             <title>{% block title %}Welcome!{% endblock %}</title>
             
             {% block stylesheets %}
-                {% stylesheets '@StaticPagesBundle/Resources/public/less/global.less' %}
+                {% stylesheets                     
+                    '@StaticPagesBundle/Resources/public/css/style.css'
+                    '@StaticPagesBundle/Resources/public/less/global.less' 
+                %}
                     <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
                 {% endstylesheets %}
             {% endblock %}
@@ -19,15 +22,42 @@
             {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
         </head>
         <body>
-            <header>
-                <div class="logo-wrap"></div>
-                <ul class="menu-list">
-                    <li></li>
-                </ul>
-            </header>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">SP<i class="fa fa-circle"></i>T</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="works.html">WORKS</a></li>
+                    <li><a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fa fa-envelope-o"></i></a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+
+
             <div class="body-wrap">
                 {% block body %}{% endblock %}                
             </div>
+
+            <div id="f">
+                <div class="container">
+                    <div class="row centered">
+                        <a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-dribbble"></i></a>
+                
+                    </div><!-- row -->
+                </div><!-- container -->
+            </div>
+            
             {% block javascripts %}{% endblock %}
             <script src="{{ asset('js/jquery.js') }}"></script>        
             <script src="{{ asset('js/bootstrap.js') }}"></script>
