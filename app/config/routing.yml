@@ -1,15 +1,5 @@
-indexer:
-    resource: "@IndexerBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 static_pages:
     resource: "@StaticPagesBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-entity:
-    resource: "@EntityBundle/Controller/"
     type:     annotation
     prefix:   /
 

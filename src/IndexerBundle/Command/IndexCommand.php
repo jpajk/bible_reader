@@ -16,25 +16,39 @@ class IndexCommand extends ContainerAwareCommand
             ->setName('index:book')
             ->setDescription('Index the book according to the required plugin')
             ->addArgument(
-                'filepath',
-                InputArgument::OPTIONAL,
-                'Provide the filepath for indexing.'
-            )
-            ->addArgument(
                 'plugin',
                 InputArgument::OPTIONAL,
                 'Provide the plugin that will handle the indexing.'
+            )
+            ->addArgument(
+                'filepath',
+                InputArgument::OPTIONAL,
+                'Provide the filepath for indexing.'
             )
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $filepath = $input->getArgument('filepath');
-        $plugin = $input->getArgument('plugin');
-        
-        $output->writeln($filepath . '' . $plugin);
-        
+        $params = [
+                'plugin' => $input->getArgument('plugin'),
+                'filepath' => $input->getArgument('filepath'),
+            ];                
+
+        /** This will probably will change if we add more book indexers. */
+        if ($params['plugin'] == 'bible') 
+        {            
+            $this->dispatchBibleIndexing($params);
+        }
+        else 
+            exit("Couldn't find the plugin!\n");        
+    }
+
+    private function dispatchBibleIndexing(array $params)
+    {
+        $indexer = $this->getContainer()->get('indexer.indexbible');
+        $indexer->setFilePath($params['filepath']);
+        $indexer->indexBook();
     }
 }
 

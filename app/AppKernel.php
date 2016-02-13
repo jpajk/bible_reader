@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
+            //new DOMWrap\Document(),
             
             new EntityBundle\EntityBundle(),
             new StaticPagesBundle\StaticPagesBundle(),

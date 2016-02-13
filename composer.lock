@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1c2ce8cf45e6bf1fce8a1f5d0448b373",
-    "content-hash": "d752c920d7766c96a8959eb6c8af1b19",
+    "hash": "ada5b4189f847d615e05dfb4f643e9c6",
+    "content-hash": "adf68dc6c42920faaa3f165fd443f579",
     "packages": [
         {
             "name": "bmatzner/fontawesome-bundle",
@@ -1288,6 +1288,63 @@
             "time": "2012-12-21 11:40:51"
         },
         {
+            "name": "scotteh/php-dom-wrapper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scotteh/php-dom-wrapper.git",
+                "reference": "bccd287456133af192fb0d05423d59c54316dfdc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scotteh/php-dom-wrapper/zipball/bccd287456133af192fb0d05423d59c54316dfdc",
+                "reference": "bccd287456133af192fb0d05423d59c54316dfdc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "lib-libxml": ">=2.7.7",
+                "php": ">=5.4.0",
+                "symfony/css-selector": "^2.6"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.8.*",
+                "phpunit/phpunit": "4.6.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DOMWrap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Scott",
+                    "email": "andrew@andrewscott.net.au"
+                }
+            ],
+            "description": "Simple DOM wrapper to select nodes using either CSS or XPath expressions and manipulate results quickly and easily.",
+            "homepage": "https://github.com/scotteh/php-dom-wrapper",
+            "keywords": [
+                "css",
+                "dom",
+                "html",
+                "parser",
+                "wrapper"
+            ],
+            "time": "2015-12-07 07:08:22"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v5.0.3",
             "source": {
@@ -2482,7 +2539,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "scotteh/php-dom-wrapper": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
@@ -2491,6 +2549,6 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "5.3.9"
+        "php": "5.5.9"
     }
 }
