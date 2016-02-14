@@ -87,3 +87,18 @@ assetic:
             node: /usr/bin/node
             node_paths: [/usr/lib/node_modules]
             apply_to: "\.less$"
+
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        bible:
+            index_name: 'bible'
+            types:
+                book:
+                    mappings:
+                        name: ~
+                    persistence:
+                        driver: orm
+                        model: EntityBundle\Entity\Book
+                        provider: ~                        

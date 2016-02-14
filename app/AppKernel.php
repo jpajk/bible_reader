@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
 
             new EntityBundle\EntityBundle(),
             new StaticPagesBundle\StaticPagesBundle(),
