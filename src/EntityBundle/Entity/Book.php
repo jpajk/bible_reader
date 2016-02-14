@@ -29,7 +29,8 @@ class Book
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Chapter", mappedBy="Book")
+     * @ORM\OneToMany(targetEntity="Chapter", mappedBy="book")
+     * @ORM\JoinColumn(name="book_chapter", referencedColumnName="id")
      */
     private $chapters;
 

@@ -35,6 +35,13 @@ class Verse
     private $chapter;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text")
+     */
+    private $content;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -65,5 +72,28 @@ class Verse
     public function getNumber()
     {
         return $this->number;
+    }
+
+    /**
+     * Set chapter
+     *
+     * @param \EntityBundle\Entity\Chapter $chapter
+     * @return Verse
+     */
+    public function setChapter(\EntityBundle\Entity\Chapter $chapter = null)
+    {
+        $this->chapter = $chapter;
+
+        return $this;
+    }
+
+    /**
+     * Get chapter
+     *
+     * @return \EntityBundle\Entity\Chapter 
+     */
+    public function getChapter()
+    {
+        return $this->chapter;
     }
 }

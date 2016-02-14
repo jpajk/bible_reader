@@ -35,6 +35,13 @@ class Verse
     private $chapter;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text")
+     */
+    private $content;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -88,5 +95,29 @@ class Verse
     public function getChapter()
     {
         return $this->chapter;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Verse
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }

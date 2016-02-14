@@ -29,13 +29,14 @@ class Chapter
     private $number;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Book", inversedBy="features")
+     * @ORM\ManyToOne(targetEntity="Book", inversedBy="chapters")
      * @ORM\JoinColumn(name="book_chapter", referencedColumnName="id")
      */
     private $book;
 
     /**
-     * @ORM\OneToMany(targetEntity="Verse", mappedBy="Chapter")
+     * @ORM\OneToMany(targetEntity="Verse", mappedBy="chapter")
+     * @ORM\JoinColumn(name="chapter_verse", referencedColumnName="id")
      */
     private $verses;
 

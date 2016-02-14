@@ -2,6 +2,9 @@
 
 namespace IndexerBundle\Service;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
+use EntityBundle\Entity\Book;
+use EntityBundle\Entity\Chapter;
+use EntityBundle\Entity\Verse;
 
 class IndexBible
 {	
@@ -10,6 +13,7 @@ class IndexBible
 
 	public function __construct(Container $container) {
         $this->container = $container;
+        $this->em = $this->container->get('doctrine')->getManager();
     }
 
 	public function setFilePath($filepath)
@@ -35,13 +39,15 @@ class IndexBible
 
 		$entity_array = [];
 
-		foreach ($spreadsheet->getWorkSheetIterator() as $index => $worksheet) 
+		foreach ($spreadsheet->getWorkSheetIterator() as $worksheet) 
 		{
 			$entity = [];
 			$entity['title'] = $worksheet->getTitle();
 			$entity['chapters'] = [];
 
-			foreach ($worksheet->getRowIterator() as $key => $row) 
+			echo "Indexing " . $entity['title'] . "\n";
+
+			foreach ($worksheet->getRowIterator() as $row) 
 			{
 				$cellIterator = $row->getCellIterator();
                 $cellIterator->setIterateOnlyExistingCells(true);
@@ -62,9 +68,40 @@ class IndexBible
                 $entity['chapters'][(int) $chapter][(int) $verse_number] = $cell_array[1];
 
 			}
-				var_dump($entity);
-                exit;
+
+			$book = new Book();			
+			$book->setName($entity['title']);
+
+			foreach ($entity['chapters'] as $index => $chapter) 
+			{
+				$obj_chapter = new Chapter();
+				$obj_chapter->setBook($book);
+				$obj_chapter->setNumber($index);
+				$book->addChapter($obj_chapter);
+
+				foreach ($chapter as $key => $verse) 
+				{
+					$obj_verse = new Verse();
+					$obj_verse->setChapter($obj_chapter);
+					$obj_verse->setNumber($key);
+					$obj_verse->setContent($verse);
+					$obj_chapter->addVerse($obj_verse);
+					$this->persist($obj_verse);
+				}
+				$this->persist($obj_chapter);
+			}
+			$this->persist($book);
+
+			$this->em->flush();
+    		$this->em->clear();
 		}	
 
+		echo "Done indexing\n";
+
+	}
+
+	private function persist($entity)
+	{
+		$this->em->persist($entity);    	
 	}
 }
