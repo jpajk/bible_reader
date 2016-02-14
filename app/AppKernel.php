@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
-            new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),            
+            new Bmatzner\FontAwesomeBundle\BmatznerFontAwesomeBundle(),
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
 
             new EntityBundle\EntityBundle(),
             new StaticPagesBundle\StaticPagesBundle(),

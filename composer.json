@@ -40,7 +40,8 @@
         "braincrafted/bootstrap-bundle": "~2.0",
         "symfony/assetic-bundle": "^2.7",
         "bmatzner/fontawesome-bundle": "~4.4",
-        "scotteh/php-dom-wrapper": "dev-master"
+        "liuggio/excelbundle": "^2.0"
+        
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

@@ -1,11 +1,16 @@
 <?php
 
 namespace IndexerBundle\Service;
-use \DOMDocument;
+use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class IndexBible
 {	
+	private $container;
 	private $filepath;
+
+	public function __construct(Container $container) {
+        $this->container = $container;
+    }
 
 	public function setFilePath($filepath)
 	{
@@ -24,36 +29,42 @@ class IndexBible
 
 	private function performIndexing()
 	{
-		$contents = (string) file_get_contents($this->filepath);		
-		$dom = new \DOMWrap\Document();
-		$dom->html($contents);
-		$nodes = $dom->find('div.book');
-		$entities_array = [];
+		$spreadsheet = $this->container->get('phpexcel')->createPHPExcelObject($this->filepath);
 
-		foreach ($nodes as $key => $node) 
-		{			
-			$title = $node->find('h3')->first();
-			$verses = $node->find('p');
+		$worksheets = $spreadsheet->getWorkSheetIterator();
 
-			if (isset($title->nodeValue)) 
+		$entity_array = [];
+
+		foreach ($spreadsheet->getWorkSheetIterator() as $index => $worksheet) 
+		{
+			$entity = [];
+			$entity['title'] = $worksheet->getTitle();
+			$entity['chapters'] = [];
+
+			foreach ($worksheet->getRowIterator() as $key => $row) 
 			{
-				$entities_array['title_' . $key] = $title->nodeValue;
+				$cellIterator = $row->getCellIterator();
+                $cellIterator->setIterateOnlyExistingCells(true);
+               	$cell_array = [];
 
-				foreach ($verses as $index => $verse) 
-				{
-					if (isset($verse->nodeValue)) 
-					{
-						$entities_array['verse_' . $key . '_' . $index] = $verse;						
-					}					
-				}
+                foreach ($cellIterator as $cell) 
+                {
+                    if (!is_null($cell)) 
+                    {
+                    	$cell_array[] = $cell->getCalculatedValue();
+                    }
+                }
+                $chapter_verse = preg_replace("/[^\d:]*/", "", $cell_array[0]);
+                $chapter_verse_array = preg_split("/:/", $chapter_verse);
+                $chapter = $chapter_verse_array[0];
+                $verse_number = $chapter_verse_array[1];
+
+                $entity['chapters'][(int) $chapter][(int) $verse_number] = $cell_array[1];
 
 			}
-
-
-		}
-
-		var_dump($entities_array);
-		exit;		
+				var_dump($entity);
+                exit;
+		}	
 
 	}
 }
