@@ -3,5 +3,10 @@ static_pages:
     type:     annotation
     prefix:   /
 
+core_bundle:
+    resource: "@CoreBundle/Controller/"
+    type: annotation
+    prefix: /
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new EntityBundle\EntityBundle(),
             new StaticPagesBundle\StaticPagesBundle(),
             new IndexerBundle\IndexerBundle(),
+            new CoreBundle\CoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

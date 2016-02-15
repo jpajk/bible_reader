@@ -13,6 +13,12 @@ class SearchController extends Controller
      */
     public function searchAction()
     {
-        return new Response('whatever');
+    	$finder = $this->container->get('fos_elastica.finder.bible.book');
+
+    	$result = $finder->findHybrid('genesis');
+
+    	dump($result);
+
+        return new Response('');
     }
 }

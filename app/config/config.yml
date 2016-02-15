@@ -91,14 +91,33 @@ assetic:
 fos_elastica:
     clients:
         default: { host: localhost, port: 9200 }
-    indexes:
+    indexes:  
+
         bible:
             index_name: 'bible'
             types:
                 book:
                     mappings:
-                        name: ~
+                        name: { boost: 10, analyzer: custom_analyzer }
                     persistence:
                         driver: orm
                         model: EntityBundle\Entity\Book
-                        provider: ~                        
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+            settings:
+                index:
+                    number_of_shards: 1
+                    analysis:
+                        analyzer:
+                            custom_analyzer:
+                                type: custom
+                                tokenizer: standard
+                                filter: [custom_ngram]
+                        filter:
+                            custom_ngram:
+                                type: "edgeNGram"
+                                min_gram: 1
+                                max_gram: 50
+                                side: front
