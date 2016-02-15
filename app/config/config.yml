@@ -98,7 +98,11 @@ fos_elastica:
             types:
                 book:
                     mappings:
-                        name: { boost: 10, analyzer: custom_analyzer }
+                        name:
+                            properties:
+                                name: 
+                                    type: string
+                                    index: not_analyzed
                     persistence:
                         driver: orm
                         model: EntityBundle\Entity\Book

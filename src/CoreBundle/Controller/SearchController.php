@@ -15,7 +15,7 @@ class SearchController extends Controller
     {
     	$finder = $this->container->get('fos_elastica.finder.bible.book');
 
-    	$result = $finder->findHybrid('genesis');
+    	$result = $finder->find('g*');
 
     	dump($result);
 
