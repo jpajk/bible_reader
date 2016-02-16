@@ -110,9 +110,30 @@ fos_elastica:
                         listener:
                             immediate: ~
                         finder: ~
+                chapter:
+                    mappings:
+                        number: ~                        
+                    persistence:
+                        driver: orm
+                        model: EntityBundle\Entity\Chapter
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+                verse:
+                    mappings:
+                        number: ~                        
+                    persistence:
+                        driver: orm
+                        model: EntityBundle\Entity\Chapter
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+
             settings:
                 index:
-                    number_of_shards: 1
+                    number_of_shards: 2
                     analysis:
                         analyzer:
                             custom_analyzer:
@@ -122,6 +143,6 @@ fos_elastica:
                         filter:
                             custom_ngram:
                                 type: "edgeNGram"
-                                min_gram: 1
-                                max_gram: 50
+                                min_gram: 3
+                                max_gram: 12
                                 side: front

@@ -13,9 +13,9 @@ class SearchController extends Controller
      */
     public function searchAction()
     {
-    	$finder = $this->container->get('fos_elastica.finder.bible.book');
+    	$finder = $this->container->get('fos_elastica.finder.bible.chapter');
 
-    	$result = $finder->find('g*');
+    	$result = $finder->find('1*');
 
     	dump($result);
 
