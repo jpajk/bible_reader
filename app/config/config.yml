@@ -91,8 +91,7 @@ assetic:
 fos_elastica:
     clients:
         default: { host: localhost, port: 9200 }
-    indexes:  
-
+    indexes:
         bible:
             index_name: 'bible'
             types:
@@ -122,10 +121,12 @@ fos_elastica:
                         finder: ~
                 verse:
                     mappings:
-                        number: ~                        
+                        number: ~
+                        tag: ~
+                        content: ~
                     persistence:
                         driver: orm
-                        model: EntityBundle\Entity\Chapter
+                        model: EntityBundle\Entity\Verse
                         provider: ~
                         listener:
                             immediate: ~

@@ -60,10 +60,12 @@ class IndexBible
                     	$cell_array[] = $cell->getCalculatedValue();
                     }
                 }
+                $book_short = preg_match("/\d*\D+/", $cell_array[0], $book_short_array);
                 $chapter_verse = preg_replace("/[^\d:]*/", "", $cell_array[0]);
                 $chapter_verse_array = preg_split("/:/", $chapter_verse);
                 $chapter = $chapter_verse_array[0];
                 $verse_number = $chapter_verse_array[1];
+
 
                 $entity['chapters'][(int) $chapter][(int) $verse_number] = $cell_array[1];
 
@@ -71,6 +73,7 @@ class IndexBible
 
 			$book = new Book();			
 			$book->setName($entity['title']);
+			$book->setShortName($book_short_array[0]);				
 
 			foreach ($entity['chapters'] as $index => $chapter) 
 			{

@@ -29,7 +29,15 @@ class Book
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Chapter", mappedBy="Book")
+     * @var string
+     *
+     * @ORM\Column(name="shortname", type="string", length=255)
+     */
+    private $shortname;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Chapter", mappedBy="book")
+     * @ORM\JoinColumn(name="book_chapter", referencedColumnName="id")
      */
     private $chapters;
 
@@ -64,5 +72,45 @@ class Book
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->chapters = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add chapters
+     *
+     * @param \EntityBundle\Entity\Chapter $chapters
+     * @return Book
+     */
+    public function addChapter(\EntityBundle\Entity\Chapter $chapters)
+    {
+        $this->chapters[] = $chapters;
+
+        return $this;
+    }
+
+    /**
+     * Remove chapters
+     *
+     * @param \EntityBundle\Entity\Chapter $chapters
+     */
+    public function removeChapter(\EntityBundle\Entity\Chapter $chapters)
+    {
+        $this->chapters->removeElement($chapters);
+    }
+
+    /**
+     * Get chapters
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChapters()
+    {
+        return $this->chapters;
     }
 }

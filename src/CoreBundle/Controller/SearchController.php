@@ -13,11 +13,13 @@ class SearchController extends Controller
      */
     public function searchAction()
     {
-    	$finder = $this->container->get('fos_elastica.finder.bible.chapter');
+    	$verse = $this->getDoctrine()
+                   ->getRepository('EntityBundle:Verse')
+                   ->find(1);
+        
+    	//$result = $finder->find('1*');
 
-    	$result = $finder->find('1*');
-
-    	dump($result);
+    	dump($verse->getTag());
 
         return new Response('');
     }

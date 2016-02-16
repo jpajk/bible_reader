@@ -29,6 +29,13 @@ class Book
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="shortname", type="string", length=255)
+     */
+    private $shortname;
+
+    /**
      * @ORM\OneToMany(targetEntity="Chapter", mappedBy="book")
      * @ORM\JoinColumn(name="book_chapter", referencedColumnName="id")
      */
@@ -105,5 +112,29 @@ class Book
     public function getChapters()
     {
         return $this->chapters;
+    }
+
+    /**
+     * Set shortname
+     *
+     * @param string $shortname
+     *
+     * @return Book
+     */
+    public function setShortname($shortname)
+    {
+        $this->shortname = $shortname;
+
+        return $this;
+    }
+
+    /**
+     * Get shortname
+     *
+     * @return string
+     */
+    public function getShortname()
+    {
+        return $this->shortname;
     }
 }

@@ -42,6 +42,21 @@ class Verse
     private $content;
 
     /**
+     * Returns the name of the book, chapter number and verse number
+     * @var string
+     */
+    private $tag;
+
+    public function getTag()
+    {
+        $book_name      = $this->getChapter()->getBook()->getShortname();
+        $chapter_number = $this->getChapter()->getNumber();
+        $verse_number   = $this->getNumber();
+        
+        return $book_name . $chapter_number . ":" . $verse_number;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
