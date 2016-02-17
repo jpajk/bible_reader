@@ -11,3 +11,5 @@
 /bin/
 /composer.phar
 /web/css/*
+/web/assets/vendor/jquery/
+/web/js/*

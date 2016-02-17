@@ -13,14 +13,18 @@ class SearchController extends Controller
      */
     public function searchAction()
     {
-    	$verse = $this->getDoctrine()
+    	return $this->render('CoreBundle:Search:search.html.twig');
+    }
+}
+
+/*
+$verse = $this->getDoctrine()
                    ->getRepository('EntityBundle:Verse')
                    ->find(1);
         
-    	//$result = $finder->find('1*');
+        //$result = $finder->find('1*');
 
-    	dump($verse->getTag());
+        dump($verse->getTag());
 
         return new Response('');
-    }
-}
+ */

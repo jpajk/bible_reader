@@ -1,0 +1,30 @@
+{% extends 'StaticPagesBundle::layout.html.twig' %}
+
+{% block body %}
+	<div class="search-wrap">
+    	<form>
+    		<div>
+    			<input type="text" class="form-control main-search" />    		
+    		</div>    		
+    	</form>		
+	</div>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets                     
+        '@CoreBundle/Resources/public/less/search.less'    
+    %}
+		<link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+	{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+	{% javascripts
+		'assets/vendor/handlebars/handlebars.min.js' 
+		'assets/vendor/typeahead.js/dist/bloodhound.min.js' 
+		'assets/vendor/typeahead.js/dist/typeahead.bundle.min.js'
+		'@CoreBundle/Resources/public/js/search.js' 
+	%}
+	    <script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
