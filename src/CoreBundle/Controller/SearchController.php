@@ -33,6 +33,8 @@ class SearchController extends Controller
             $a_result = new \stdClass();
             $a_result->id = $find->getId();
             $a_result->content = (property_exists($find, 'content')) ? $find->getContent() : null;
+            $a_result->tag = (property_exists($find, 'tag')) ? $find->getTag() : null;
+            $a_result->name = (property_exists($find, 'name')) ? $find->getName() : null;
             $result_array[] = $a_result;            
         }        
 
