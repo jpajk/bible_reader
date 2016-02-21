@@ -23,6 +23,10 @@
 }
 
 .navbar-collapse .search-wrap {
+	-webkit-transform: translateY(10px);
+	-moz-transform: translateY(10px);
+	-o-transform: translateY(10px);
+	transform: translateY(10px);
 	> form {
 		> div {
 			> span {
@@ -30,5 +34,18 @@
 				padding-top: 10px;
 			}
 		}
+	}
+}
+
+#results-wrap {
+	padding: 30px 200px;
+
+	.single-result {
+		padding: 10px;
+		border-bottom: 1px solid #dfdfdf;
+	}
+
+	.single-result:last-of-type {
+		border-bottom: 0px;
 	}
 }

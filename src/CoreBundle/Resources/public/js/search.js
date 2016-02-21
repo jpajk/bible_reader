@@ -9,7 +9,7 @@ $(function() {
         url: 'http://bibleapp.jesus/app_dev.php/search/query?q=%QUERY',
         wildcard: '%QUERY',
          filter: function(list) {
-            console.log(list);
+            //console.log(list);
             return $.map(list, function(find) { 
               return { content: find.content, id: find.id }; 
             });
@@ -19,43 +19,31 @@ $(function() {
 
     bibleSearch.initialize();
 
-    globalBible = bibleSearch;
-
-    //$('.main-search').typeahead(null, {
-    //      name: 'bibleSearch',
-    //      displayKey: 'name',
-    //      source: bibleSearch.ttAdapter(),
-    //  templates: {
-    //    suggestion: Handlebars.compile('<p><a href="#">{{content}}</a></p>')
-    //  }
-    //});
+    globalBible = bibleSearch;    
 });
 
 $(function() {
-  $('.search-wrap').on('click focus', function(e) {
+  $('.search-wrap').on('keyup', function(e) {
       $(this).insertBefore('.navbar-nav')
              .addClass('nav navbar-nav col-xs-12 col-xs-6')
-             .trigger('focus')
              .unbind(e);
+
+      $(this).find('input').focus();
+
+      $('.body-wrap').html('<div id="results-wrap" class="row"></div>');
+
+      populateDOM.populateWithResults($(this).find('input'));
     });
 });
 
-function sync(datums) {
-  console.log('datums from `local`, `prefetch`, and `#add`');
-  console.log(datums);
-}
-
-function async(datums) {
-  console.log('datums from `remote`');
-  console.log(datums);
-}
-
 var populateDOM = {
   handleArray : function(json) {
-    returnDOM = '';
+    var returnDOM = '';
     var object = this;
+    var template = templates.searchTemplate;
+
     $.each(json, function(index, result) {
-      returnDOM += object.readyTemplate(templates.searchTemplate, result);
+      returnDOM += object.readyTemplate(template, result);
     });
 
     return returnDOM;
@@ -72,9 +60,29 @@ var populateDOM = {
   },
   hydrateTemplate : function(template, json) {
     return template(json);
+  },
+  populateWithResults : function(el) {
+    var object = this;
+
+    $(el).on('keyup', function() {
+      $('#results-wrap').html('');      
+
+      globalBible.search($(el).val(), object.populateSync, object.populateAsync);
+    });
+  },
+  populateSync : function(json) {
+    return;
+  },
+  populateAsync : function(json) {        
+    var results = populateDOM.handleArray(json);
+    $('#results-wrap').html(results);
   }
 };
 
 var templates = {
-  searchTemplate: '<div><p>{{name}}</p></div>'
+  searchTemplate: '<div class="col-xs-12 single-result">' + 
+                    '<p>' +
+                      '{{content}}' +
+                    '</p>' +
+                  '</div>'
 };

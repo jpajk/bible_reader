@@ -99,31 +99,7 @@ fos_elastica:
         bible:
             index_name: 'bible'
             finder: ~
-            types:
-                book:
-                    mappings:
-                        name:
-                            properties:
-                                name: 
-                                    type: string
-                                    index: not_analyzed
-                    persistence:
-                        driver: orm
-                        model: EntityBundle\Entity\Book
-                        provider: ~
-                        listener:
-                            immediate: ~
-                        finder: ~
-                chapter:
-                    mappings:
-                        number: ~                        
-                    persistence:
-                        driver: orm
-                        model: EntityBundle\Entity\Chapter
-                        provider: ~
-                        listener:
-                            immediate: ~
-                        finder: ~
+            types:                
                 verse:
                     mappings:
                         number: ~
@@ -136,7 +112,6 @@ fos_elastica:
                         listener:
                             immediate: ~
                         finder: ~
-
             settings:
                 index:
                     number_of_shards: 2
@@ -148,7 +123,7 @@ fos_elastica:
                                 filter: [custom_ngram]
                         filter:
                             custom_ngram:
-                                type: "edgeNGram"
-                                min_gram: 3
-                                max_gram: 12
+                                type: "ngram"
+                                min_gram: 10
+                                max_gram: 50
                                 side: front
