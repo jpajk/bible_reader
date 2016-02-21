@@ -105,6 +105,8 @@ fos_elastica:
                         number: ~
                         tag: ~
                         content: ~
+                        chapter: ~
+                        book_shortname: ~
                     persistence:
                         driver: orm
                         model: EntityBundle\Entity\Verse

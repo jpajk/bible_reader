@@ -47,13 +47,33 @@ class Verse
      */
     private $tag;
 
+    /**     
+     * @var String
+     */
+    private $book_shortname;
+
+    /**     
+     * @var Int
+     */
+    private $chapter_number;
+
+    public function getBookShortname()
+    {
+        return $this->getChapter()->getBook()->getShortname();
+    }
+
+    public function getChapterNumber()
+    {
+        return $this->getChapter()->getNumber();
+    }
+
     public function getTag()
     {
         $book_name      = $this->getChapter()->getBook()->getShortname();
         $chapter_number = $this->getChapter()->getNumber();
         $verse_number   = $this->getNumber();
         
-        return $book_name . $chapter_number . ":" . $verse_number;
+        return $book_name . " " . $chapter_number . ":" . $verse_number;
     }
 
     /**

@@ -1,11 +1,19 @@
 //todo make better center
 .body-wrap .search-wrap {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);	
+	-moz-transform: translateY(-50%);	
+	-o-transform: translateY(-50%);	
+	transform: translateY(-50%);
+	left: 0;
+	right: 0;
+
 	text-align: center;
 	> form {
 		> div {
 			width: 100%;
-			padding: 15px 15px 10px;
-			background-color: #dfdfdf;
+			padding: 20px 15px 15px;			
 			border-radius: 15px;
 			
 			> span {
@@ -16,8 +24,21 @@
 				}
 			}
 			display: inline-block;
-			max-width: 500px;			
-			margin-top: 150px;
+			max-width: 500px;
+		}
+		> div.search-box {
+			position: relative;
+			z-index: 1;
+		}
+		> div.underlay {
+			left: 0px;
+			right: 0px;
+			position: absolute!important;
+			margin: 0px auto;
+			height: 100%;
+			z-index: 0;
+			background-color: #fff;
+			opacity: 0.5;
 		}
 	}
 }
@@ -35,10 +56,16 @@
 			}
 		}
 	}
+
+	div.underlay {
+		display: none;
+	}
 }
 
 #results-wrap {
-	padding: 30px 200px;
+	padding: 30px 200px 150px;
+	margin-left: 0;
+	margin-right: 0;
 
 	.single-result {
 		padding: 10px;
