@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SearchController extends Controller
 {
     /**
-     * @Route("/search")
+     * @Route("/", name="Home")
      */
     public function searchAction()
     {
@@ -32,9 +32,10 @@ class SearchController extends Controller
         {
             $a_result = new \stdClass();
             $a_result->id = $find->getId();
-            $a_result->content = (property_exists($find, 'content')) ? $find->getContent() : null;
-            $a_result->tag = (property_exists($find, 'tag')) ? $find->getTag() : null;
-            $a_result->name = (property_exists($find, 'name')) ? $find->getName() : null;
+            $a_result->content = $find->getContent();
+            $a_result->tag = $find->getTag();
+            $a_result->shortname = $find->getBookShortname();
+            $a_result->chapter = $find->getChapterNumber();
             $result_array[] = $a_result;            
         }        
 

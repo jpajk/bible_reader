@@ -36,7 +36,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">HOME</a></li>
+                    <li class="active"><a href="{{ path('Home') }}">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>                    
                     <li><a href="works.html">Read</a></li>
                   </ul>
@@ -45,7 +45,7 @@
             </div>
 
 
-            <div class="body-wrap">
+            <div class="body-wrap" style="background-image: url('../../images/open-book-981405_1280-cmp.jpg')">
                 {% block body %}{% endblock %}                
             </div>
 

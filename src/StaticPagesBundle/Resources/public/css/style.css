@@ -231,19 +231,19 @@ a:after {
 
 /* Footer Wrap */
 #f {
-	background: #dcdcdc;
+	background: #983232;
 	padding-top: 30px;
 	padding-bottom: 30px;
 }
 
 #f i {
-	color: #bdbdbd;
+	color: #fff;
 	font-size: 30px;
 	padding: 20px;
 }
 
 #f i:hover {
-	color: #ff7878;
+	color: #dfdfdf;
 }
 
 /****** SECTIONS *****/

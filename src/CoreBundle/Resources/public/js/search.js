@@ -23,17 +23,21 @@ $(function() {
 });
 
 $(function() {
-  $('.search-wrap').on('keyup', function(e) {
+  $('.search-wrap').one('keydown', function(e) {
       $(this).insertBefore('.navbar-nav')
              .addClass('nav navbar-nav col-xs-12 col-xs-6')
-             .unbind(e);
+             ;
 
       $(this).find('input').focus();
 
-      $('.body-wrap').html('<div id="results-wrap" class="row"></div>');
+      $('.body-wrap').html('<div id="results-wrap" class="row"></div>')
+                     .attr('style', '');
 
       populateDOM.populateWithResults($(this).find('input'));
     });
+
+    $('.main-banner').fadeIn(1000).css('top', '150px');
+
 });
 
 var populateDOM = {
