@@ -36,15 +36,15 @@
                 </div>
                 <div class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="{{ path('Home') }}">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>                    
-                    <li><a href="works.html">Read</a></li>
+                    <li class="active"><a href="{{ path('Home') }}">Home</a></li>
+                    <li><a href="about.html">About</a></li>                    
+                    <li><a href="works.html">Read bible</a></li>
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>
             </div>
 
-
+            <div class="main-wrap">
             <div class="body-wrap" style="background-image: url('../../images/open-book-981405_1280-cmp.jpg')">
                 {% block body %}{% endblock %}                
             </div>
@@ -56,6 +56,7 @@
                 
                     </div><!-- row -->
                 </div><!-- container -->
+            </div>
             </div>
 
             <script src="{{ asset('js/jquery.js') }}"></script>        
