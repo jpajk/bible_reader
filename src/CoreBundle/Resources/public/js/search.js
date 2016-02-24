@@ -11,7 +11,12 @@ $(function() {
          filter: function(list) {
             //console.log(list);
             return $.map(list, function(find) { 
-              return { content: find.content, id: find.id }; 
+              return { content: find.content, 
+                       id: find.id, 
+                       chapter: find.chapter, 
+                       number: find.number,
+                       shortname: find.shortname,
+                     }; 
             });
         }
       } 
@@ -25,7 +30,7 @@ $(function() {
 $(function() {
   $('.search-wrap').one('keydown', function(e) {
       $(this).appendTo('.search-holder')
-             .addClass('nav navbar-nav col-xs-12 col-xs-6');
+             .addClass('nav navbar-nav col-xs-12 col-xs-8');
 
       $(this).find('input').focus();
 
@@ -45,7 +50,7 @@ var populateDOM = {
     var object = this;
     var template = templates.searchTemplate;
 
-    $.each(json, function(index, result) {
+    $.each(json, function(index, result) {      
       returnDOM += object.readyTemplate(template, result);
     });
 
@@ -61,7 +66,7 @@ var populateDOM = {
   compileFromHandleBars : function(template) {
     return Handlebars.compile(template);
   },
-  hydrateTemplate : function(template, json) {
+  hydrateTemplate : function(template, json) {    
     return template(json);
   },
   populateWithResults : function(el) {
@@ -84,7 +89,15 @@ var populateDOM = {
 
 var templates = {
   searchTemplate: '<div class="col-xs-12 single-result">' + 
+                    '<div class="tag col-xs-3">' +
                     '<p>' +
+                      '<span class="bookname">{{shortname}}</span>' +
+                      '<span class="chaptername">{{chapter}}</span>' +
+                      '<span class="divider">:</span>' +
+                      '<span class="verse-number">{{number}}</span>' +
+                    '</p>' +
+                    '</div>' +
+                    '<p class="col-xs-9">' +
                       '{{content}}' +
                     '</p>' +
                   '</div>'

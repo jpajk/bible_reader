@@ -36,6 +36,7 @@ class SearchController extends Controller
             $a_result->tag = $find->getTag();
             $a_result->shortname = $find->getBookShortname();
             $a_result->chapter = $find->getChapterNumber();
+            $a_result->number = $find->getNumber();
             $result_array[] = $a_result;            
         }        
 
