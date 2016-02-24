@@ -24,9 +24,8 @@ $(function() {
 
 $(function() {
   $('.search-wrap').one('keydown', function(e) {
-      $(this).insertBefore('.navbar-nav')
-             .addClass('nav navbar-nav col-xs-12 col-xs-6')
-             ;
+      $(this).appendTo('.search-holder')
+             .addClass('nav navbar-nav col-xs-12 col-xs-6');
 
       $(this).find('input').focus();
 

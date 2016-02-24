@@ -86,7 +86,7 @@ assetic:
         less:
             node: /usr/bin/node
             node_paths: [/usr/lib/node_modules]
-            apply_to: "\.less$"
+            apply_to: "\.less$"            
         coffee:
             node: /usr/bin/node
             node_paths: [/usr/lib/node_modules]
