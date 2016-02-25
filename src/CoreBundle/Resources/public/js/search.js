@@ -89,15 +89,15 @@ var populateDOM = {
 
 var templates = {
   searchTemplate: '<div class="col-xs-12 single-result">' + 
-                    '<div class="tag col-xs-3">' +
+                    '<div class="tag col-xs-12">' +
                     '<p>' +
                       '<span class="bookname">{{shortname}}</span>' +
                       '<span class="chaptername">{{chapter}}</span>' +
-                      '<span class="divider">:</span>' +
+                      //'<span class="divider">:</span>' +
                       '<span class="verse-number">{{number}}</span>' +
                     '</p>' +
                     '</div>' +
-                    '<p class="col-xs-9">' +
+                    '<p class="col-xs-offset-2 col-xs-9">' +
                       '{{content}}' +
                     '</p>' +
                   '</div>'

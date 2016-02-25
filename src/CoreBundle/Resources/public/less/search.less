@@ -3,6 +3,7 @@
 @small-devices: 768px;
 @med-devices-desktops: 992px;
 @only-media: 1200;
+@font-standard: "Droid Serif";
 
 //todo make better center
 .body-wrap .search-wrap {
@@ -74,8 +75,8 @@
 	margin-right: 0;
 
 	.single-result {
-		padding: 10px;
-		border-bottom: 1px solid #dfdfdf;
+		padding: 15px 10px;
+		border-bottom: 1px solid #dfdfdf;		
 	}
 
 	.single-result:last-of-type {
@@ -96,6 +97,7 @@
 
 		h2 {
 			font-size: 4.5em!important;
+			font-family: @font-standard;
 
 			@media screen and (max-width: @small-devices) {
 				font-size: 3.5em!important;
@@ -128,12 +130,22 @@
 }
 
 .tag {
-	font-size: 2em;
-	font-family: Garamond;
+	font-size: 2em;	
 
 	> p {
 		> span {
+			font-family: @font-standard;
 			margin-right: 5px;
+			display: inline-block;
+		}
+		> span.chaptername {
+			min-width: 30px;
+		}
+		> span.bookname {
+			min-width: 60px;
+		}
+		> span.verse-number {
+			float: right;
 		}
 	}
 }
