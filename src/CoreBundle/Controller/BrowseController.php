@@ -19,26 +19,41 @@ class BrowseController extends Controller
      * @Route("/", name="BookIndex")
      */
     public function bookAction()
-    {
-        return $this->render('CoreBundle:Browse:book.html.twig', array(
-            // ...
-        ));
+    {    	
+    	$books = $this->getDoctrine()
+    				  ->getManager()
+    				  ->getRepository('EntityBundle:Book')
+    				  ->findAll();
+
+        return $this->render('CoreBundle:Browse:book.html.twig', compact('books'));
     }
 
     /**
      * Lists all chapters for a given book
-     * @Route("/{book}")
+     * @Route("/{book}", name="ChaptersIndex", requirements={"book": "\d?\D+$"})
      */
     public function chaptersAction(Request $req)
     {
+    	$book_name = $req->attributes
+    					 ->get('book');
 
+    	$verses = $this->getDoctrine()
+    				   ->getManager()
+    				   ->getRepository('EntityBundle:Book')
+    				   ->getBookVerses($book_name);    	
 
-        return $this->render('CoreBundle:Browse:chapter.html.twig', array(
-            // ...
-        ));
+    	if (!$verses) 
+    	{
+    		throw $this->createNotFoundException('Book not found');    		
+    	}
+
+    	dump($verses);
+
+        return $this->render('CoreBundle:Browse:chapter.html.twig', compact('verses'));
     }
 
-    /**     
+    /**
+     * Lists all verses for a given chapter in a given book
      * @Route("/{book}/{chapter}")
      */
     public function singleChapterAction(Request $req)

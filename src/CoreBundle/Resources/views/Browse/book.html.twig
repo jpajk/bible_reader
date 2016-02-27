@@ -1,1 +1,25 @@
-whatever
+{% extends 'StaticPagesBundle::layout.html.twig' %}
+
+{% block body %}    
+	<div class="books-list row">
+		<div class="col-xs-12">
+			<ul class="col-xs-offset-1">
+				{% if books %}
+					{% for book in books %}
+						<li class="book-item">
+							<p>{{ book.name }}</p>
+						</li>
+					{% endfor %}
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets                     
+        '@CoreBundle/Resources/public/less/book.less'    
+    %}
+		<link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+	{% endstylesheets %}
+{% endblock %}

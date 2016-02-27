@@ -39,14 +39,14 @@
                   <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="{{ path('Home') }}">Home</a></li>
                     <li><a href="#">About</a></li>                    
-                    <li><a href="#">Read bible</a></li>
+                    <li><a href="{{ path('BookIndex') }}">Read the Bible</a></li>
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>
             </div>
 
             <div class="main-wrap">
-            <div class="body-wrap" style="background-image: url('../../images/open-book-981405_1280-cmp.jpg')">
+            <div class="body-wrap" {% block bodystyles %}{% endblock %}>
                 {% block body %}{% endblock %}                
             </div>
 

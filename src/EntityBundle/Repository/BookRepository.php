@@ -12,4 +12,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class BookRepository extends EntityRepository
 {
+	public function getBookVerses($book_name)
+	{
+		if (!$book_name) return [];
+
+		$result = $this->_em->createQueryBuilder()
+    				   		->select('b', 'ch', 'v')
+    				   		->from('EntityBundle:Book', 'b')
+    				   		->leftJoin('b.chapters', 'ch')
+    				   		->leftJoin('ch.verses', 'v')
+    				   		->where('b.shortname = :shortname')
+    				   		->setParameter('shortname', $book_name)
+    				   		->getQuery()
+    				   		->getResult();
+
+    	return $result;
+	}
 }
