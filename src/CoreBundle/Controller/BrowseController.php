@@ -37,29 +37,18 @@ class BrowseController extends Controller
     	$book_name = $req->attributes
     					 ->get('book');
 
-    	$verses = $this->getDoctrine()
-    				   ->getManager()
-    				   ->getRepository('EntityBundle:Book')
-    				   ->getBookVerses($book_name);    	
+    	$book = $this->getDoctrine()
+    				 ->getManager()
+    				 ->getRepository('EntityBundle:Book')
+    				 ->getBookVerses($book_name);    	
 
-    	if (!$verses) 
+    	if (!$book) 
     	{
     		throw $this->createNotFoundException('Book not found');    		
     	}
 
-    	dump($verses);
+    	dump($book);
 
-        return $this->render('CoreBundle:Browse:chapter.html.twig', compact('verses'));
-    }
-
-    /**
-     * Lists all verses for a given chapter in a given book
-     * @Route("/{book}/{chapter}")
-     */
-    public function singleChapterAction(Request $req)
-    {
-        return $this->render('CoreBundle:Browse:single.html.twig', array(
-            // ...
-        ));
-    }
+        return $this->render('CoreBundle:Browse:chapter.html.twig', compact('book'));
+    }    
 }

@@ -1,6 +1,18 @@
 {% extends 'StaticPagesBundle::layout.html.twig' %}
 
 {% block body %}
-    
-
+	{% if book %}
+		<div class="book-wrap">
+			{% for chapter in book.chapters %}
+			    <div class="book-chapter">
+			    	{{ chapter.number }}
+			    	{% for verse in chapter.verses %}
+			    	    <div class="chapter-verse">
+			    	    	{{ verse.number }}{{ verse.content }}
+			    	    </div>
+			    	{% endfor %}
+			    </div>
+			{% endfor %}				
+		</div>
+	{% endif %}
 {% endblock %}
