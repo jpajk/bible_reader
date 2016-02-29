@@ -27,16 +27,21 @@ class SearchController extends Controller
 
         $result = $finder->find($query . '*');
         $result_array = [];
+        $router = $this->get('router');
+        $router->getContext()->setHost('bibleapp.jesus');
 
         foreach ($result as $key => &$find) 
         {
             $a_result = new \stdClass();
             $a_result->id = $find->getId();
-            $a_result->content = $find->getContent();
-            $a_result->tag = $find->getTag();
+            $a_result->content = $find->getContent();            
             $a_result->shortname = $find->getBookShortname();
             $a_result->chapter = $find->getChapterNumber();
             $a_result->number = $find->getNumber();
+            $a_result->link = $router->generate(
+                'ChaptersIndex', 
+                array('book' => $a_result->shortname)
+                ) . "#verse-no-{$a_result->chapter}-{$a_result->number}";
             $result_array[] = $a_result;            
         }        
 

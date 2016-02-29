@@ -11,7 +11,7 @@
 				    <div class="book-chapter col-xs-offset-3">
 				    	<span class="chapter-number">{{ chapter.number }}</span>
 				    	{% for verse in chapter.verses %}
-				    	    <p class="chapter-verse col-xs-8 verse-no-{{ verse.number }}">
+				    	    <p id="verse-no-{{ chapter.number }}-{{ verse.number }}" class="chapter-verse col-xs-8">
 				    	    	<span class="verse-number" style="float: left;">{{ verse.number }}</span><span class="verse-content col-xs-11">{{ verse.content }}</span>
 				    	    </p>
 				    	{% endfor %}

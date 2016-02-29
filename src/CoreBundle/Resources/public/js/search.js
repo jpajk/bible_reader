@@ -16,6 +16,7 @@ $(function() {
                        chapter: find.chapter, 
                        number: find.number,
                        shortname: find.shortname,
+                       link: find.link
                      }; 
             });
         }
@@ -88,7 +89,8 @@ var populateDOM = {
 };
 
 var templates = {
-  searchTemplate: '<div class="col-xs-12 single-result">' + 
+  searchTemplate: '<div class="col-xs-12 single-result">' +
+                    '<a href="#">' +
                     '<div class="tag col-xs-12">' +
                     '<p>' +
                       '<span class="bookname">{{shortname}}</span>' +
@@ -100,5 +102,6 @@ var templates = {
                     '<p class="col-xs-offset-2 col-xs-9">' +
                       '{{content}}' +
                     '</p>' +
+                    '</a>' +
                   '</div>'
 };
