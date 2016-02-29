@@ -2,17 +2,30 @@
 
 {% block body %}
 	{% if book %}
-		<div class="book-wrap">
-			{% for chapter in book.chapters %}
-			    <div class="book-chapter">
-			    	{{ chapter.number }}
-			    	{% for verse in chapter.verses %}
-			    	    <div class="chapter-verse">
-			    	    	{{ verse.number }}{{ verse.content }}
-			    	    </div>
-			    	{% endfor %}
-			    </div>
-			{% endfor %}				
+		<div class="book-wrap row">
+			<div class="book-name-wrap">
+				<h1>{{ book.name }}</h1>				
+			</div>
+			<div class="col-xs-12">
+				{% for chapter in book.chapters %}
+				    <div class="book-chapter col-xs-offset-3">
+				    	<span class="chapter-number">{{ chapter.number }}</span>
+				    	{% for verse in chapter.verses %}
+				    	    <p class="chapter-verse col-xs-8 verse-no-{{ verse.number }}">
+				    	    	<span class="verse-number" style="float: left;">{{ verse.number }}</span><span class="verse-content col-xs-11">{{ verse.content }}</span>
+				    	    </p>
+				    	{% endfor %}
+				    </div>
+				{% endfor %}
+			</div>
 		</div>
 	{% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets                     
+        '@CoreBundle/Resources/public/less/chapter.less'                
+    %}
+	    <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+    {% endstylesheets %}
 {% endblock %}

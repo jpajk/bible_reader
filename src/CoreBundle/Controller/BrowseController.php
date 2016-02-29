@@ -45,9 +45,7 @@ class BrowseController extends Controller
     	if (!$book) 
     	{
     		throw $this->createNotFoundException('Book not found');    		
-    	}
-
-    	dump($book);
+    	}   	
 
         return $this->render('CoreBundle:Browse:chapter.html.twig', compact('book'));
     }    

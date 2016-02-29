@@ -26,6 +26,8 @@ class BookRepository extends EntityRepository
     				   		->getQuery()
     				   		->getResult();
 
+        if (!$result) return [];
+
     	return $result[0];
 	}
 }
