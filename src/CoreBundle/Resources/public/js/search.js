@@ -49,27 +49,17 @@ var populateDOM = {
   handleArray : function(json) {
     var returnDOM = '';
     var object = this;
-    var template = templates.searchTemplate;
+    var template = Handlebars.templates.search;
 
     $.each(json, function(index, result) {      
-      returnDOM += object.readyTemplate(template, result);
+      returnDOM += template(result);
     });
 
     return returnDOM;
-  },
-  readyTemplate : function(templateString, json) {    
-    template = this.compileFromHandleBars(templateString);    
-    return this.hydrateTemplate(template, json);
-  },
+  },  
   appendByJQuery : function(readyElement, nodeName) {
     $(nodeName).append(readyElement);
-  },
-  compileFromHandleBars : function(template) {
-    return Handlebars.compile(template);
-  },
-  hydrateTemplate : function(template, json) {    
-    return template(json);
-  },
+  },    
   populateWithResults : function(el) {
     var object = this;
 
@@ -86,22 +76,4 @@ var populateDOM = {
     var results = populateDOM.handleArray(json);
     $('#results-wrap').html(results);
   }
-};
-
-var templates = {
-  searchTemplate: '<div class="col-xs-12 single-result">' +
-                    '<a href="#">' +
-                    '<div class="tag col-xs-12">' +
-                    '<p>' +
-                      '<span class="bookname">{{shortname}}</span>' +
-                      '<span class="chaptername">{{chapter}}</span>' +
-                      //'<span class="divider">:</span>' +
-                      '<span class="verse-number">{{number}}</span>' +
-                    '</p>' +
-                    '</div>' +
-                    '<p class="col-xs-offset-2 col-xs-9">' +
-                      '{{content}}' +
-                    '</p>' +
-                    '</a>' +
-                  '</div>'
 };

@@ -86,11 +86,11 @@ assetic:
         less:
             node: /usr/bin/node
             node_paths: [/usr/lib/node_modules]
-            apply_to: "\.less$"            
-        coffee:
+            apply_to: "\.less$"
+        handlebars:
             node: /usr/bin/node
             node_paths: [/usr/lib/node_modules]
-            apply_to: "\.coffee$"
+            apply_to: "\.handlebars$"
 
 fos_elastica:
     clients:
