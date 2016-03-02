@@ -71,6 +71,15 @@
 
 #results-wrap {
 	padding: 30px 200px 150px;
+
+	@media screen and (max-width: @small-devices) {
+		padding: 30px 100px 150px;
+	}
+
+	@media screen and (max-width: @extra-small) {
+		padding: 30px 0px 150px;
+	}
+
 	margin-left: 0;
 	margin-right: 0;
 
@@ -81,6 +90,10 @@
 
 	.single-result:last-of-type {
 		border-bottom: 0px;
+	}
+
+	a {
+		color: inherit;
 	}
 }
 

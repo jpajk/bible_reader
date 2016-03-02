@@ -31,7 +31,7 @@ $(function() {
 $(function() {
   $('.search-wrap').one('keydown', function(e) {
       $(this).appendTo('.search-holder')
-             .addClass('nav navbar-nav col-xs-12 col-xs-8');
+             .addClass('nav navbar-nav col-xs-8');
 
       $(this).find('input').focus();
 

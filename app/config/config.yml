@@ -104,8 +104,7 @@ fos_elastica:
                     mappings:
                         number: ~
                         tag: ~
-                        content: ~
-                        chapter: ~
+                        content: ~                        
                         book_shortname: ~
                     persistence:
                         driver: orm
