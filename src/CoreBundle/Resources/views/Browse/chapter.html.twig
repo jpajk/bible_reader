@@ -4,7 +4,7 @@
 	{% if book %}
 		<div class="book-wrap row">
 			<div class="book-name-wrap">
-				<h1>{{ book.name }}</h1>				
+				<h1>{{ book.name }}</h1>
 			</div>
 			<div class="col-xs-12">
 				{% for chapter in book.chapters %}
@@ -23,9 +23,18 @@
 {% endblock %}
 
 {% block stylesheets %}
-    {% stylesheets                     
-        '@CoreBundle/Resources/public/less/chapter.less'                
+    {% stylesheets
+        '@CoreBundle/Resources/public/less/chapter.less'
     %}
 	    <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
     {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+		'@CoreBundle/Resources/public/js/chapter.js'
+		filter='uglifyjs'
+	%}
+	    <script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
 {% endblock %}

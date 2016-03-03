@@ -79,6 +79,7 @@ services:
         alias: doctrine
 
 assetic:
+    node: /usr/bin/node
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
     filters:
@@ -91,6 +92,8 @@ assetic:
             node: /usr/bin/node
             node_paths: [/usr/lib/node_modules]
             apply_to: "\.handlebars$"
+        uglifyjs:
+          bin: /usr/bin/uglifyjs
 
 fos_elastica:
     clients:
@@ -99,12 +102,12 @@ fos_elastica:
         bible:
             index_name: 'bible'
             finder: ~
-            types:                
+            types:
                 verse:
                     mappings:
                         number: ~
                         tag: ~
-                        content: ~                        
+                        content: ~
                         book_shortname: ~
                     persistence:
                         driver: orm

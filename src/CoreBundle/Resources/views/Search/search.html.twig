@@ -2,22 +2,22 @@
 
 {% block body %}
 	<div class="main-banner">
-		<h2>King James Bible</h2>		
+		<h2>King James Bible</h2>
 	</div>
 
 	<div class="search-wrap">
     	<form>
     		<div class="search-box">
-    			<input autofocus placeholder="Enter a word or phrase..." type="text" class="form-control main-search" id="main-search" />    		
-    		</div>    		
+    			<input autofocus placeholder="Enter a word or phrase..." type="text" class="form-control main-search" id="main-search" />
+    		</div>
 			<div class="underlay"></div>
-    	</form>		
+    	</form>
 	</div>
 {% endblock %}
 
 {% block stylesheets %}
-    {% stylesheets                     
-        '@CoreBundle/Resources/public/less/search.less'    
+    {% stylesheets
+        '@CoreBundle/Resources/public/less/search.less'
     %}
 		<link rel="stylesheet" type="text/css" href="{{ asset_url }}">
 	{% endstylesheets %}
@@ -25,10 +25,11 @@
 
 {% block javascripts %}
 	{% javascripts
-		'assets/vendor/handlebars/handlebars.min.js' 
-		'assets/vendor/typeahead.js/dist/bloodhound.min.js' 		
+		'assets/vendor/handlebars/handlebars.min.js'
+		'assets/vendor/typeahead.js/dist/bloodhound.min.js'
 		'@CoreBundle/Resources/public/js/search.js'
 		'@CoreBundle/Resources/public/handlebars/search.handlebars'
+		filter='uglifyjs'
 	%}
 	    <script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
