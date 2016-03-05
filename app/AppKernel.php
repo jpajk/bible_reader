@@ -25,8 +25,7 @@ class AppKernel extends Kernel
 
             new EntityBundle\EntityBundle(),
             new StaticPagesBundle\StaticPagesBundle(),
-            new IndexerBundle\IndexerBundle(),
-            new CoreBundle\CoreBundle(),            
+            new CoreBundle\CoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
@@ -34,6 +33,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new IndexerBundle\IndexerBundle();
         }
 
         return $bundles;
