@@ -1,4 +1,4 @@
-casper.test.begin('Visit the pages of bibleapp', 10, function suite(test) {
+casper.test.begin('Visit the pages of bibleapp', 9, function suite(test) {
 	casper.start(siteUrl, function(response) {		
 		test.assertEquals(response.status, 200, 'response is 200');
 		test.assertTitle('Bible Reader', 'the page title is as expected');
@@ -15,10 +15,6 @@ casper.test.begin('Visit the pages of bibleapp', 10, function suite(test) {
 	casper.then(function() {
 		this.sendKeys('#main-search', 'aaron');
 		test.assertExists('#results-wrap', 'the list displays on search');
-
-		this.waitForSelector('.single-result', function() {		    
-			test.assertExists('.single-result', 'results display on search');
-		});
 	});
 	
 
