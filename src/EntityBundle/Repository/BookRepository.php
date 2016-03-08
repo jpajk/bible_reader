@@ -28,6 +28,6 @@ class BookRepository extends EntityRepository
 
         if (!$result) return [];
 
-    	return $result[0];
+    	return array_shift($result);
 	}
 }
