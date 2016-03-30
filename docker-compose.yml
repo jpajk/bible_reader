@@ -31,7 +31,7 @@ app:
    - "8888:80"
   links:
     - db:mysql
-    - elasticsearch  
+    - elasticsearch    
   environment:
     WEB_DOCUMENT_ROOT: /app/web/
     WEB_DOCUMENT_INDEX: app.php
