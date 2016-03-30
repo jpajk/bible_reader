@@ -1,0 +1,40 @@
+{% extends 'StaticPagesBundle::layout.html.twig' %}
+
+{% block body %}
+	{% if book %}
+		<div class="book-wrap row">
+			<div class="book-name-wrap">
+				<h1>{{ book.name }}</h1>
+			</div>
+			<div class="col-xs-12">
+				{% for chapter in book.chapters %}
+				    <div class="book-chapter col-xs-offset-3">
+				    	<span class="chapter-number">{{ chapter.number }}</span>
+				    	{% for verse in chapter.verses %}
+				    	    <p id="verse-no-{{ chapter.number }}-{{ verse.number }}" class="chapter-verse col-xs-8">
+				    	    	<span class="verse-number">{{ verse.number }}</span><span class="verse-content col-xs-11">{{ verse.content }}</span>
+				    	    </p>
+				    	{% endfor %}
+				    </div>
+				{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+        '@CoreBundle/Resources/public/less/chapter.less'
+    %}
+	    <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts
+		'@CoreBundle/Resources/public/js/chapter.js'
+		filter='uglifyjs'
+	%}
+	    <script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}

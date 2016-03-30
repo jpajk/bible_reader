@@ -1,0 +1,69 @@
+{% extends '::base.html.twig' %}
+
+{% block layout %}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8" />
+            <title>{% block title %}Bible Reader{% endblock %}</title>
+            
+            {% stylesheets                     
+                '@StaticPagesBundle/Resources/public/css/style.css'
+                '@StaticPagesBundle/Resources/public/less/global.less' 
+            %}
+                <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+            {% endstylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
+            
+            {% block stylesheets %}
+            {% endblock %}
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+            {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+        </head>
+        <body>
+            <div class="navbar top-navbar navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  {# <a class="navbar-brand" href="#">SP<i class="fa fa-circle"></i>T</a> #}
+                </div>
+                <div class="col-xs-12 col-sm-7 search-holder"></div>
+                <div class="col-xs-12 col-sm-4 navbar-collapse collapse menu-right">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="{{ path('Home') }}">Home</a></li>
+                    <li><a href="{{ path('About') }}">About</a></li>                    
+                    <li><a href="{{ path('BookIndex') }}">Read the Bible</a></li>
+                  </ul>
+                </div><!--/.nav-collapse -->
+              </div>
+            </div>
+
+            <div class="main-wrap">
+            <div class="body-wrap" {% block bodystyles %}{% endblock %}>
+                {% block body %}{% endblock %}                
+            </div>
+
+            <div id="f">
+                <div class="container">
+                    <div class="row centered">
+                        <a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-facebook"></i></a>
+                
+                    </div><!-- row -->
+                </div><!-- container -->
+            </div>
+            </div>
+
+            <script src="{{ asset('js/jquery.js') }}"></script>        
+            <script src="{{ asset('js/bootstrap.js') }}"></script>
+            {% block javascripts %}{% endblock %}
+        </body>
+    </html>    
+{% endblock %}
+

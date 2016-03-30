@@ -1,0 +1,164 @@
+@retina: 320px;
+@extra-small: 480px;
+@small-devices: 768px;
+@med-devices-desktops: 992px;
+@only-media: 1200;
+@font-standard: "Droid Serif";
+
+//todo make better center
+.body-wrap .search-wrap {
+	position: relative;
+	top: 200px;
+	-webkit-transform: translateY(-50%);	
+	-moz-transform: translateY(-50%);	
+	-o-transform: translateY(-50%);	
+	transform: translateY(-50%);
+	left: 0;
+	right: 0;	
+
+	text-align: center;
+	> form {
+		> div {
+			width: 100%;
+			padding: 20px 15px 15px;			
+			border-radius: 15px;
+			
+			> span {
+				width: 100%;				
+
+				input {
+					width: 100%
+				}
+			}
+			display: inline-block;
+			max-width: 500px;
+		}
+		> div.search-box {
+			position: relative;
+			z-index: 1;
+		}
+		> div.underlay {
+			left: 0px;
+			right: 0px;
+			position: absolute!important;
+			margin: 0px auto;
+			height: 100%;
+			z-index: 0;
+			background-color: #fff;
+			opacity: 0.5;
+		}
+	}
+}
+
+.navbar-collapse .search-wrap {
+	-webkit-transform: translateY(10px);
+	-moz-transform: translateY(10px);
+	-o-transform: translateY(10px);
+	transform: translateY(10px);
+	> form {
+		> div {
+			> span {
+				width: 100%;
+				padding-top: 10px;
+			}
+		}
+	}
+
+	div.underlay {
+		display: none;
+	}
+}
+
+#results-wrap {
+	padding: 30px 200px 150px;
+
+	@media screen and (max-width: @small-devices) {
+		padding: 30px 100px 150px;
+	}
+
+	@media screen and (max-width: @extra-small) {
+		padding: 30px 0px 150px;
+	}
+
+	margin-left: 0;
+	margin-right: 0;
+
+	.single-result {
+		padding: 15px 10px;
+		border-bottom: 1px solid #dfdfdf;		
+	}
+
+	.single-result:last-of-type {
+		border-bottom: 0px;
+	}
+
+	a {
+		color: inherit;
+	}
+}
+
+.main-banner {
+		display: none;	
+		text-align: center;
+		top: 100px;
+		position: relative;
+
+		-webkit-transition: top 1s;
+		-moz-transition: top 1s;
+		-o-transition: top 1s;
+		transition: top 1s;
+
+		h2 {
+			font-size: 4.5em!important;
+			font-family: @font-standard;
+
+			@media screen and (max-width: @small-devices) {
+				font-size: 3.5em!important;
+			}
+
+			@media screen and (max-width: @extra-small) {
+				font-size: 2.5em!important;
+			}
+		}
+}
+
+.search-holder {
+	margin-top: 10px;
+
+	@media screen and (max-width: @small-devices) {
+		margin-top: 0;
+		position: absolute!important;
+		text-align: center!important;
+		top: 15px;
+
+		.search-wrap {
+			display: inline-block;
+			float: none;
+		}
+	}
+}
+
+.navbar-toggle {
+	z-index: 1;
+}
+
+.tag {
+	font-size: 2em;	
+
+	> p {
+		> span {
+			font-family: @font-standard;
+			margin-right: 5px;
+			display: inline-block;
+		}
+		> span.chaptername {
+			min-width: 30px;
+		}
+		> span.bookname {
+			min-width: 60px;
+		}
+		> span.verse-number {
+			float: right;
+		}
+	}
+}

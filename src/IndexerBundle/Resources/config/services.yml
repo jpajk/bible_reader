@@ -1,0 +1,4 @@
+services:
+    indexer.indexbible:
+        class: IndexerBundle\Service\IndexBible
+        arguments: ['@service_container']
