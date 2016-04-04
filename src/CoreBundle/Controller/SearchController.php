@@ -32,6 +32,7 @@ class SearchController extends Controller
 
         foreach ($result as $key => &$find) 
         {
+
             $a_result = new \stdClass();
             $a_result->id = $find->getId();
             $a_result->content = $find->getContent();            
@@ -41,7 +42,7 @@ class SearchController extends Controller
             $a_result->link = $router->generate(
                 'ChaptersIndex', 
                 array('book' => $a_result->shortname)
-                ) . "#verse-no-{$a_result->chapter}-{$a_result->number}";
+                ) . "#verse-no-{$a_result->chapter}-{$a_result->number}";            
             $result_array[] = $a_result;            
         }        
 
