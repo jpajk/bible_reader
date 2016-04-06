@@ -42,6 +42,8 @@ $(function() {
                        .attr('style', '');
 
         isAppended = true;
+
+        //$('#bottom-container').fadeIn();
       }
 
       if ($(this).find('input').val() !== "") {
